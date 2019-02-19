@@ -64,6 +64,7 @@
 #define RT5514_DSP_CTRL1			0x2f00
 #define RT5514_DSP_CTRL3			0x2f08
 #define RT5514_DSP_CTRL4			0x2f10
+#define RT5514_VER_CTRL				0x2fa4
 #define RT5514_VENDOR_ID1			0x2ff0
 #define RT5514_VENDOR_ID2			0x2ff4
 
@@ -243,9 +244,13 @@
 #define RT5514_PLL_INP_MAX			40000000
 #define RT5514_PLL_INP_MIN			256000
 
-#define RT5514_FIRMWARE1	"0x4ff60000.dat"
-#define RT5514_FIRMWARE2	"0x4ffc0000.dat"
-#define RT5514_FIRMWARE3	"0x4ffaf000.dat"
+#define RT5514_FIRMWARE1	"rt5514_dsp_fw1.bin"
+#define RT5514_FIRMWARE2	"rt5514_dsp_fw2.bin"
+#define RT5514_FIRMWARE3	"rt5514_dsp_fw3.bin"
+
+//#define RT5514_FIRMWARE1	"0x4ff60000.dat"
+//#define RT5514_FIRMWARE2	"0x4ffc0000.dat"
+//#define RT5514_FIRMWARE3	"0x4ffaf000.dat"
 
 /* System Clock Source */
 enum {
@@ -272,9 +277,14 @@ struct rt5514_priv {
 	int pll_in;
 	int pll_out;
 	int dsp_enabled;
+	int dsp_idle;
+	int dsp_tic_ns;
+	int hotword_trig;
+	int dsp_core_reset;
 	u8 *model_buf;
 	unsigned int model_len;
 	unsigned int pll3_cal_value;
 };
 
+int rt5514_dsp_reload_fw(int firmware_reload);
 #endif /* __RT5514_H__ */
