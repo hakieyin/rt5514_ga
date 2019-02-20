@@ -35,12 +35,10 @@
 #include "rt5514-spi.h"
 #endif
 
-#define VERSION "0.0.2"
+#define VERSION "0.0.5"
 int dsp_idle_mode_on = 0;
-//int dsp_tic_ns = 0;
 struct snd_soc_codec *global_codec;
 EXPORT_SYMBOL(dsp_idle_mode_on);
-//EXPORT_SYMBOL(dsp_tic_ns);
 
 static char hotword_model_name_para[256] = RT5514_FIRMWARE3;
 
